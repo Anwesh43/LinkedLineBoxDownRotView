@@ -36,9 +36,9 @@ fun Canvas.drawLineBoxCirclePasser(scale : Float, w : Float, h : Float, paint : 
     val sc4 : Float = scale.divideScale(3, parts)
     save()
     translate(w / 2, 0f)
-    drawCircle(0f, -size + h * (1 - sc3), size * sc2, paint)
+    drawCircle(0f, -size / 2 + h * (1 - sc3), size * sc2 * 0.5f, paint)
     save()
-    translate(-size / 2, size / 2)
+    translate(-size / 2, h / 2 + size / 2)
     for (j in 0..1) {
         save()
         translate(size * j, 0f)
