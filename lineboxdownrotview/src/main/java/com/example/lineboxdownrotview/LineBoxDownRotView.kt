@@ -62,11 +62,11 @@ fun Canvas.drawLBRDNode(i : Int, scale : Float, paint : Paint) {
 
 class LineBoxDownRotView(ctx : Context) : View(ctx) {
 
-    override fun onDraw(canvas : Canvas) {
+    override fun onDraw(canvas: Canvas) {
 
     }
 
-    override fun onTouchEvent(event : MotionEvent) : Boolean {
+    override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
 
@@ -75,9 +75,9 @@ class LineBoxDownRotView(ctx : Context) : View(ctx) {
         return true
     }
 
-    data class State(var scale : Float = 0f, var prevScale : Float = 0f, var dir : Float = 0f) {
+    data class State(var scale: Float = 0f, var prevScale: Float = 0f, var dir: Float = 0f) {
 
-        fun update(cb : (Float) -> Unit) {
+        fun update(cb: (Float) -> Unit) {
             scale += dir * scGap
             if (Math.abs(scale - prevScale) > 1) {
                 scale = prevScale + dir
@@ -87,7 +87,7 @@ class LineBoxDownRotView(ctx : Context) : View(ctx) {
             }
         }
 
-        fun startUpdating(cb : () -> Unit) {
+        fun startUpdating(cb: () -> Unit) {
             if (dir == 0f) {
                 dir = 1f - 2 * prevScale
                 cb()
@@ -95,15 +95,15 @@ class LineBoxDownRotView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class Animator(var view : View, var animated : Boolean = false) {
+    data class Animator(var view: View, var animated: Boolean = false) {
 
-        fun animate(cb : () -> Unit) {
+        fun animate(cb: () -> Unit) {
             if (animated) {
                 cb()
                 try {
                     Thread.sleep(delay)
                     view.invalidate()
-                } catch(ex : Exception) {
+                } catch (ex: Exception) {
 
                 }
             }
@@ -123,10 +123,10 @@ class LineBoxDownRotView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class LBRDNode(var i : Int, val state : State = State()) {
+    data class LBRDNode(var i: Int, val state: State = State()) {
 
-        private var prev : LBRDNode? = null
-        private var next : LBRDNode? = null
+        private var prev: LBRDNode? = null
+        private var next: LBRDNode? = null
 
         init {
             addNeighbor()
@@ -140,20 +140,20 @@ class LineBoxDownRotView(ctx : Context) : View(ctx) {
         }
 
 
-        fun draw(canvas : Canvas, paint : Paint) {
+        fun draw(canvas: Canvas, paint: Paint) {
             canvas.drawLBRDNode(i, state.scale, paint)
         }
 
-        fun update(cb : (Float) -> Unit) {
+        fun update(cb: (Float) -> Unit) {
             state.update(cb)
         }
 
-        fun startUpdating(cb : () -> Unit) {
+        fun startUpdating(cb: () -> Unit) {
             state.startUpdating(cb)
         }
 
-        fun getNext(dir : Int, cb : () -> Unit) : LBRDNode {
-            var curr : LBRDNode? = prev
+        fun getNext(dir: Int, cb: () -> Unit): LBRDNode {
+            var curr: LBRDNode? = prev
             if (dir == 1) {
                 curr = next
             }
@@ -165,16 +165,16 @@ class LineBoxDownRotView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class LineBoxRotDown(var i : Int) {
+    data class LineBoxRotDown(var i: Int) {
 
-        private var curr : LBRDNode = LBRDNode(0)
-        private var dir : Int = 1
+        private var curr: LBRDNode = LBRDNode(0)
+        private var dir: Int = 1
 
-        fun draw(canvas : Canvas, paint : Paint) {
+        fun draw(canvas: Canvas, paint: Paint) {
             curr.draw(canvas, paint)
         }
 
-        fun update(cb : (Float) -> Unit) {
+        fun update(cb: (Float) -> Unit) {
             curr.update {
                 curr = curr.getNext(dir) {
                     dir *= -1
@@ -183,8 +183,31 @@ class LineBoxDownRotView(ctx : Context) : View(ctx) {
             }
         }
 
-        fun startUpdating(cb : () -> Unit) {
+        fun startUpdating(cb: () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view: LineBoxDownRotView) {
+
+        private val lbrd: LineBoxRotDown = LineBoxRotDown(0)
+        private val animator: Animator = Animator(view)
+        private val paint: Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas: Canvas) {
+            canvas.drawColor(backColor)
+            lbrd.draw(canvas, paint)
+            animator.animate {
+                lbrd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lbrd.startUpdating {
+                animator.start()
+            }
         }
     }
 }
