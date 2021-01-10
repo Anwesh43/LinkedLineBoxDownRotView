@@ -212,4 +212,12 @@ class LineBoxDownRotView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : LineBoxDownRotView {
+            val view : LineBoxDownRotView = LineBoxDownRotView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
