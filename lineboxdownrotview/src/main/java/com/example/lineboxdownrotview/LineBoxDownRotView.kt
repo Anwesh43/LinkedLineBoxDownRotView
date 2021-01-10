@@ -9,7 +9,7 @@ import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.RectF
 
-val parts : Int = 5
+val parts : Int = 4
 val scGap : Float = 0.02f
 val strokeFactor : Float = 90f
 val lSizeFactor : Float = 3.2f
@@ -38,14 +38,14 @@ fun Canvas.drawLineBoxRot(scale : Float, w : Float, h : Float, paint : Paint) {
     val sc3 : Float = scale.divideScale(2, parts)
     val sc4 : Float = scale.divideScale(3, parts)
     save()
-    translate(w / 2, 0f)
+    translate(0f, 0f)
     save()
-    translate(-lSize + (w / 2) * (sc1 - sc4), 0f)
+    translate(-lSize + (w / 2) * (sc1 - sc4), h   / 2)
     drawLine(0f, 0f, lSize, 0f, paint)
     restore()
     save()
+    translate(w / 2, (h / 2) * (sc2 + sc4) + (rSize * sc4))
     rotate(90f * sc3)
-    translate(0f, (h / 2) * (sc2 + sc4) + (rSize * sc4))
     drawRect(RectF(-rSize, -rSize, 0f, 0f), paint)
     restore()
     restore()
