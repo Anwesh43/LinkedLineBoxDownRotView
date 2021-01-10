@@ -209,4 +209,13 @@ class LineBoxCirclePasserView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : LineBoxCirclePasserView {
+            val view : LineBoxCirclePasserView = LineBoxCirclePasserView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
