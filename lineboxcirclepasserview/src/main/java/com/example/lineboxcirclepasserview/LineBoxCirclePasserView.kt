@@ -162,7 +162,7 @@ class LineBoxCirclePasserView(ctx : Context) : View(ctx) {
         }
     }
 
-    data class LineBoxDownRot(var i : Int) {
+    data class LineBoxCirclePasser(var i : Int) {
 
         private var curr : LBCPNode = LBCPNode(0)
         private var dir : Int = 1
@@ -182,6 +182,29 @@ class LineBoxCirclePasserView(ctx : Context) : View(ctx) {
 
         fun startUpdating(cb : () -> Unit) {
             curr.startUpdating(cb)
+        }
+    }
+
+    data class Renderer(var view : LineBoxCirclePasserView) {
+
+        private val lbcp : LineBoxCirclePasser = LineBoxCirclePasser(0)
+        private val animator : Animator = Animator(view)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            lbcp.draw(canvas, paint)
+            animator.animate {
+                lbcp.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            lbcp.startUpdating {
+                animator.start()
+            }
         }
     }
 }
