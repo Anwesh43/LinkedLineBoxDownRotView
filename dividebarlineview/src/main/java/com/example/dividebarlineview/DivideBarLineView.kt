@@ -219,4 +219,13 @@ class DivideBarLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : DivideBarLineView {
+            val view : DivideBarLineView = DivideBarLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
