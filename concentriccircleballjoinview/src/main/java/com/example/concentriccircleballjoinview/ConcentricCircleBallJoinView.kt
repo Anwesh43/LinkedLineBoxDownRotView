@@ -208,4 +208,13 @@ class ConcentricCircleBallJoinView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity: Activity) : ConcentricCircleBallJoinView {
+            val view : ConcentricCircleBallJoinView = ConcentricCircleBallJoinView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
