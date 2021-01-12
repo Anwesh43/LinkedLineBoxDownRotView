@@ -194,4 +194,27 @@ class DivideBarLineView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : DivideBarLineView) {
+
+        private val animator : Animator = Animator(view)
+        private val dbl : DivideBarLine = DivideBarLine(0)
+        private val paint : Paint = Paint()
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            dbl.draw(canvas, paint)
+            animator.animate {
+                dbl.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            dbl.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
