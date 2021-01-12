@@ -183,4 +183,27 @@ class ConcentricCircleBallJoinView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : ConcentricCircleBallJoinView) {
+
+        private val animator : Animator = Animator(view)
+        private val ccbj : ConcentricCircleBallJoin = ConcentricCircleBallJoin(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            ccbj.draw(canvas, paint)
+            animator.animate {
+                ccbj.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            ccbj.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
