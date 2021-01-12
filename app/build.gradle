@@ -44,4 +44,5 @@ dependencies {
     implementation project(":lineboxdownrotview")
     implementation project(":lineboxcirclepasserview")
     implementation project(":dividebarlineview")
+    implementation project(":concentriccircleballjoinview")
 }

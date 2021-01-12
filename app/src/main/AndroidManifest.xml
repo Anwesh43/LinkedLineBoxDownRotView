@@ -22,6 +22,8 @@
         </activity>
         <activity android:name=".DivideBarLineActivity" android:parentActivityName=".MainActivity">
         </activity>
+        <activity android:name=".ConcentricCircleActivity" android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>
