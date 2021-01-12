@@ -12,6 +12,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/concentriccircleballjoinview" />
             <option value="$PROJECT_DIR$/dividebarlineview" />
             <option value="$PROJECT_DIR$/lineboxcirclepasserview" />
             <option value="$PROJECT_DIR$/lineboxdownrotview" />
