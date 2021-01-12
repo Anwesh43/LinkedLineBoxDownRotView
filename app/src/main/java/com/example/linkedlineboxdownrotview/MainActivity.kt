@@ -18,7 +18,7 @@ class MainActivity : AppCompatActivity() {
         LineBoxCirclePasserView.create(this)
         val i1 = Intent(this, BoxDownActivity::class.java)
         val i2 = Intent(this, BoxCircleActivity::class.java)
-
+        val i3 = Intent(this, DivideBarLineActivity::class.java)
         val b1 : Button = Button(this).apply {
             setText("BoxDown")
             setOnClickListener{
@@ -31,10 +31,18 @@ class MainActivity : AppCompatActivity() {
                 startActivity(i2)
             }
         }
-        b2.x = 400f
+        b2.x = 200f
+        val b3 : Button = Button(this).apply {
+            setText("DivideLine")
+            setOnClickListener {
+                startActivity(i3)
+            }
+        }
+        b3.x = 400f
         val coordinatorLayout : CoordinatorLayout = CoordinatorLayout(this).apply {
             addView(b1)
             addView(b2)
+            addView(b3)
         }
         setContentView(coordinatorLayout)
         fullScreen()

@@ -19,7 +19,8 @@
         <activity android:name=".BoxCircleActivity" android:parentActivityName=".MainActivity">
         </activity>
         <activity android:name=".BoxDownActivity" android:parentActivityName=".MainActivity">
-
+        </activity>
+        <activity android:name=".DivideBarLineActivity" android:parentActivityName=".MainActivity">
         </activity>
     </application>
 
