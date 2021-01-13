@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".ConcentricCircleActivity" android:parentActivityName=".MainActivity">
         </activity>
+        <activity android:name=".TwoBarDownActivity" android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>
