@@ -216,4 +216,13 @@ class TwoLineBarDownView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : TwoLineBarDownView {
+            val view : TwoLineBarDownView = TwoLineBarDownView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
