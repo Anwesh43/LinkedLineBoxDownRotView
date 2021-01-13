@@ -1,3 +1,4 @@
+include ':twolinebardownview'
 include ':concentriccircleballjoinview'
 include ':dividebarlineview'
 include ':lineboxcirclepasserview'

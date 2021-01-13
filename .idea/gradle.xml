@@ -16,6 +16,7 @@
             <option value="$PROJECT_DIR$/dividebarlineview" />
             <option value="$PROJECT_DIR$/lineboxcirclepasserview" />
             <option value="$PROJECT_DIR$/lineboxdownrotview" />
+            <option value="$PROJECT_DIR$/twolinebardownview" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
