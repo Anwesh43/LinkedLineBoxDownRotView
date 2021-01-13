@@ -191,4 +191,27 @@ class TwoLineBarDownView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : TwoLineBarDownView) {
+
+        private val animator : Animator = Animator(view)
+        private val tlbd : TwoLineBarDown = TwoLineBarDown(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            tlbd.draw(canvas, paint)
+            animator.animate {
+                tlbd.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            tlbd.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
