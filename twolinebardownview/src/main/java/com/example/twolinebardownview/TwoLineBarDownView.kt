@@ -45,7 +45,7 @@ fun Canvas.drawTwoLineBarDown(scale : Float, w : Float, h : Float, paint : Paint
     translate(w / 2 - barW / 2, h)
     for (j in 0..1) {
         save()
-        translate(-barW * j, 0f)
+        translate(barW * j, 0f)
         drawLine(0f, -size * sc5, 0f, -size * sc1, paint)
         restore()
     }
