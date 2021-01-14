@@ -39,7 +39,7 @@ fun Canvas.drawRightAngleStepLine(scale : Float, w : Float,h : Float, paint : Pa
 
     for (j in 0..1) {
         save()
-        rotate(rot * sf.divideScale(1, parts))
+        rotate(rot * sf.divideScale(1, parts) * j)
         drawLine(0f, 0f, 0f, -size * sf.divideScale(0, parts), paint)
         restore()
     }
