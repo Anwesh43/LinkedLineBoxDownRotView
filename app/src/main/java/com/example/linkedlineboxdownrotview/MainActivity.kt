@@ -8,6 +8,7 @@ import android.view.WindowManager
 import android.widget.Button
 import androidx.coordinatorlayout.widget.CoordinatorLayout
 import com.example.lineboxcirclepasserview.LineBoxCirclePasserView
+import com.example.rightanglesteplineview.RightAngleStepLineView
 
 //import com.example.lineboxdownrotview.LineBoxDownRotView
 
@@ -21,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         val i3 = Intent(this, DivideBarLineActivity::class.java)
         val i4 = Intent(this, ConcentricCircleActivity::class.java)
         val i5 = Intent(this, TwoBarDownActivity::class.java)
+        val i6 = Intent(this, RightAngleStepLineActivity::class.java)
         val b1 : Button = Button(this).apply {
             setText("BoxDown")
             setOnClickListener{
@@ -57,12 +59,21 @@ class MainActivity : AppCompatActivity() {
         }
         b5.x = 300f
         b5.y = 200f
+        val b6 = Button(this).apply {
+            setText("RightAngleStep")
+            setOnClickListener {
+                startActivity(i6)
+            }
+        }
+        b6.x = 600f
+        b6.y = 200f
         val coordinatorLayout : CoordinatorLayout = CoordinatorLayout(this).apply {
             addView(b1)
             addView(b2)
             addView(b3)
             addView(b4)
             addView(b5)
+            addView(b6)
         }
         setContentView(coordinatorLayout)
         fullScreen()

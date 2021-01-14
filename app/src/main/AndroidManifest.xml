@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".TwoBarDownActivity" android:parentActivityName=".MainActivity">
         </activity>
+        <activity android:name=".RightAngleStepLineActivity" android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>
