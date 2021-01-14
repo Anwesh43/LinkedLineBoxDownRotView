@@ -214,4 +214,13 @@ class RightAngleStepLineView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+
+        fun create(activity : Activity) : RightAngleStepLineView {
+            val view : RightAngleStepLineView = RightAngleStepLineView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
