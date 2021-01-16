@@ -193,4 +193,27 @@ class TwoRotLineBoxCreateView(ctx : Context) : View(ctx) {
             curr.startUpdating(cb)
         }
     }
+
+    data class Renderer(var view : TwoRotLineBoxCreateView) {
+
+        private val animator : Animator = Animator(view)
+        private val trlbc : TwoRotLineBoxCreate = TwoRotLineBoxCreate(0)
+        private val paint : Paint = Paint(Paint.ANTI_ALIAS_FLAG)
+
+        fun render(canvas : Canvas) {
+            canvas.drawColor(backColor)
+            trlbc.draw(canvas, paint)
+            animator.animate {
+                trlbc.update {
+                    animator.stop()
+                }
+            }
+        }
+
+        fun handleTap() {
+            trlbc.startUpdating {
+                animator.start()
+            }
+        }
+    }
 }
