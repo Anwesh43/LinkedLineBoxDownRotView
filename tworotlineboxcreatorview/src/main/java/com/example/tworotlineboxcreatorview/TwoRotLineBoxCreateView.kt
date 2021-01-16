@@ -51,7 +51,7 @@ fun Canvas.drawTwoRotLineBoxCreate(scale : Float, w : Float, h : Float, paint : 
         restore()
         save()
         translate(- w / 2 + (w / 2 - size / 2) * sf4, 0f)
-        drawRect(RectF(0f, -gap * sf3, size, 0f), paint)
+        drawRect(RectF(0f, -gap * sf3 * 0.5f, size, 0f), paint)
         restore()
         restore()
     }
