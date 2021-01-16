@@ -47,4 +47,5 @@ dependencies {
     implementation project(":concentriccircleballjoinview")
     implementation project(":twolinebardownview")
     implementation project(":rightanglesteplineview")
+    implementation project(":tworotlineboxcreatorview")
 }

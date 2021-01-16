@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         val i3 = Intent(this, DivideBarLineActivity::class.java)
         val i4 = Intent(this, ConcentricCircleActivity::class.java)
         val i5 = Intent(this, TwoBarDownActivity::class.java)
+        val i7 = Intent(this, TwoRotLineBoxCreateActivity::class.java)
         val i6 = Intent(this, RightAngleStepLineActivity::class.java)
         val b1 : Button = Button(this).apply {
             setText("BoxDown")
@@ -67,6 +68,14 @@ class MainActivity : AppCompatActivity() {
         }
         b6.x = 600f
         b6.y = 200f
+        val b7 = Button(this).apply {
+            setText("TwoRotLineBoxCreate")
+            setOnClickListener {
+                startActivity(i7)
+            }
+        }
+        b7.x = 0f
+        b7.y = 400f
         val coordinatorLayout : CoordinatorLayout = CoordinatorLayout(this).apply {
             addView(b1)
             addView(b2)
@@ -74,13 +83,14 @@ class MainActivity : AppCompatActivity() {
             addView(b4)
             addView(b5)
             addView(b6)
+            addView(b7)
         }
         setContentView(coordinatorLayout)
         fullScreen()
     }
 }
 
-fun MainActivity.fullScreen() {
+fun AppCompatActivity.fullScreen() {
     supportActionBar?.hide()
     window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 }
