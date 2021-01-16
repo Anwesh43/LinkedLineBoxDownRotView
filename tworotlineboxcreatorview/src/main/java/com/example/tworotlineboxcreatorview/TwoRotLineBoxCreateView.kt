@@ -218,4 +218,12 @@ class TwoRotLineBoxCreateView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    companion object {
+        fun create(activity : Activity) : TwoRotLineBoxCreateView {
+            val view : TwoRotLineBoxCreateView = TwoRotLineBoxCreateView(activity)
+            activity.setContentView(view)
+            return view
+        }
+    }
 }
