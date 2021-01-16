@@ -18,6 +18,7 @@
             <option value="$PROJECT_DIR$/lineboxdownrotview" />
             <option value="$PROJECT_DIR$/rightanglesteplineview" />
             <option value="$PROJECT_DIR$/twolinebardownview" />
+            <option value="$PROJECT_DIR$/tworotlineboxcreatorview" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
