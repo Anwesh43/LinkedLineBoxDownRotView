@@ -129,4 +129,45 @@ class TwoRotLineBoxCreateView(ctx : Context) : View(ctx) {
             }
         }
     }
+
+    data class TRLBCNode(var i : Int, val state : State = State()) {
+
+        private var next : TRLBCNode? = null
+        private var prev : TRLBCNode? = null
+
+        init {
+            addNeighbor()
+        }
+
+        fun addNeighbor() {
+            if (i < colors.size - 1) {
+                next = TRLBCNode(i + 1)
+                next?.prev = this
+            }
+        }
+
+        fun draw(canvas : Canvas, paint : Paint) {
+            canvas.drawTRLBCNode(i, state.scale, paint)
+        }
+
+        fun update(cb : (Float) -> Unit) {
+            state.update(cb)
+        }
+
+        fun startUpdating(cb : () -> Unit) {
+            state.startUpdating(cb)
+        }
+
+        fun getNext(dir : Int, cb : () -> Unit) : TRLBCNode {
+            var curr : TRLBCNode? = prev
+            if (dir == 1) {
+                curr = next
+            }
+            if (curr != null) {
+                return curr
+            }
+            cb()
+            return this
+        }
+    }
 }
